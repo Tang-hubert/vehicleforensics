@@ -96,6 +96,9 @@ $ docker-compose down
 ```shell=
 $ docker-compose ps
 ```
+<<<<<<< HEAD
++
+=======
 
 #### start main script
 
@@ -116,3 +119,4 @@ $ sudo apt install -y bluetooth libbluetooth-dev libatlas-base-dev
 ```
 (vehicleforensics)$ python3 client_main.py
 ```
+>>>>>>> e6d4517f0c7e53d5d5ec28158275932d81f937a8

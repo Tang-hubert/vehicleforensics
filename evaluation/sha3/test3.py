@@ -12,9 +12,12 @@ data = {
     "pid": {},
 }
 
+# data = "{{{0}}}:A,0C:AA,0D:A,11:A".format("04")
+
 def concatDataFrame(df, data):
     df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
     return df
+    # print(df)
 
 
 def main():
@@ -60,7 +63,7 @@ def main():
         # ====== Next Loop ======
         i += 1
         data['pid'][f'id{i}'] = "AAAA"
-    
+        print(df)
     print(df.head())
 
     ## Plot

@@ -2,8 +2,10 @@ from dotenv import load_dotenv
 from datetime import datetime
 import time, os
 import pika
+from pathlib import Path
 
-load_dotenv()
+dotenv_path = Path('C:/Users/Hubert Tang/Desktop/folders/履歷/車載資安專題/vehicleforensics/server/rabbitmq/test/.env.example')
+load_dotenv(dotenv_path=dotenv_path)
 
 RABBIRMQ_HOST = os.getenv("RABBITMQ_HOST")
 RABBITMQ_PORT = int(os.getenv("RABBITMQ_PORT"))
@@ -29,6 +31,7 @@ def main():
     while True:
         channel.basic_publish(exchange='', routing_key=RABBITMQ_QUEUE, body=datetime.now().strftime('%H:%M:%S'))
         print(" [x] Message Sent")
+        # body: prod to cons
 
         # time.sleep(0.0001)
         time.sleep(2)

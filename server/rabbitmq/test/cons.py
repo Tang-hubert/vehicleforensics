@@ -6,10 +6,13 @@ import ast
 from dotenv import load_dotenv
 import binascii
 import pika
+from pathlib import Path
 
-load_dotenv()
+dotenv_path = Path('C:/Users/Hubert Tang/Desktop/folders/履歷/車載資安專題/vehicleforensics/server/rabbitmq/test/.env.example')
+load_dotenv(dotenv_path=dotenv_path)
 
 RABBIRMQ_HOST = os.getenv("RABBITMQ_HOST")
+print(os.getenv("RABBITMQ_HOST"))
 RABBITMQ_PORT = int(os.getenv("RABBITMQ_PORT"))
 
 RABBITMQ_USERNAME = os.getenv("RABBITMQ_DEFAULT_USER")
@@ -34,13 +37,13 @@ def main():
 
     def callback(ch, method, properties, body):
 
-        # print(" [x] Received %r" % body)
-        # time.sleep(2)
+        print(" [x] Received %r" % body)
+        time.sleep(2)
 
-        tmp = json.loads(body.decode())
-        cipher_polys = ast.literal_eval(tmp["cipherPolys"])
-        signature = binascii.unhexlify(tmp["sign"])
-        print(f"\ncipher_polys : {cipher_polys}\n\nsignature : {signature}")
+        # tmp = json.loads(body.decode())
+        # cipher_polys = ast.literal_eval(tmp["cipherPolys"])
+        # signature = binascii.unhexlify(tmp["sign"])
+        # print(f"\ncipher_polys : {cipher_polys}\n\nsignature : {signature}")
 
         pass
 
