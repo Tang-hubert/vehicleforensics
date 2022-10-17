@@ -83,15 +83,31 @@ def main():
         t = timer()
         h_o.update(m_byt)
         hash_elapsed_time = timer() - t
-        h_byt = h_o.digest()
+        # print("m_byt:", m_byt)
+        # result: m_byt: b'1666023628.241776,04:A,0C:AA,0D:A,11:A'
+
+        # print("h_o.update(m_byt):", h_o.update(m_byt))
+        # result: h_o.update(m_byt): None
+
+        """
+        What is "sha3_256().update()" for?
+        """
+
+        h_byt = h_o.digest() 
+        # print("h_byt:", h_byt)
+        # it will have "{}"
+        # result: h_byt: b"\xff\x1dM\xb0<^\x17\x8b'\x83\x01+\x165{X\x99\x05h\xda\xa4tH\x16V\x1f\x14\x9b\x1aF(\xd7"
 
         # sign
         t = timer()
         s_byt = CFSK.sign(h_byt)
+        # because h_byt have "{}" will it have some problem?
+        # the anwser is no, the problem seems like it is in hashing. (???)
         sign_elapsed_time = timer() - t
 
         # encrypt
         # print(m_str)
+        # result: 1666023878.2152247,04:A,0C:AA,0D:A,11:A
         t = timer()
         e_polys, e_n = ntruEncrypt(m_str, SNPK)
         encrypt_elapsed_time = timer() - t
@@ -100,7 +116,9 @@ def main():
         for e_poly in e_polys:
             e_list.append(e_poly.coeffs)
 
-        # print(e_n) # 14
+        # print(e_n)
+        # result: 13
+        # print(e_list)
 
         # decrypt
         t = timer()
@@ -118,7 +136,9 @@ def main():
         # timedelta(seconds=elaspsed_time).total_seconds
         # print(f"{i}, {timedelta(seconds=hash_elapsed_time).total_seconds()}, {timedelta(seconds=sign_elapsed_time).total_seconds()}, {timedelta(seconds=encrypt_elapsed_time).total_seconds()}, {timedelta(seconds=decrypt_elapsed_time).total_seconds()}, {timedelta(seconds=verify_elapsed_time).total_seconds()}")
 
+# Main print
         print(f"message: {m_str}\nhashed: {h_byt}\nsigned: {s_byt}\nencrypted: {e_list}\ndecrypted: {d_str}\nverified: {v_bool}")
+        # Why finished ntruDecrypt() we dont have to Unsign the signature?
 
 
         # elaspsed_time = [timedelta(seconds=hash_elapsed_time).total_seconds(), timedelta(seconds=sign_elapsed_time).total_seconds(), 
