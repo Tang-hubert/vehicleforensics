@@ -8,7 +8,7 @@ import binascii
 import pika
 from pathlib import Path
 
-dotenv_path = Path('C:/Users/Hubert Tang/Desktop/folders/履歷/車載資安專題/vehicleforensics/server/rabbitmq/test/.env.example')
+dotenv_path = Path('./server/rabbitmq/test/.env')
 load_dotenv(dotenv_path=dotenv_path)
 
 RABBIRMQ_HOST = os.getenv("RABBITMQ_HOST")
@@ -26,7 +26,8 @@ def main():
     credentials = pika.PlainCredentials(RABBITMQ_USERNAME, RABBITMQ_PASSWORD)
 
     parm1 = pika.ConnectionParameters(
-        host=RABBIRMQ_HOST, port=RABBITMQ_PORT, credentials=credentials)
+        host=RABBIRMQ_HOST, port=RABBITMQ_PORT, credentials=credentials
+        )
 
     all_parm = [parm1]
 
