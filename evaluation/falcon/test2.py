@@ -90,7 +90,7 @@ def main():
         # result: h_o.update(m_byt): None
 
         """
-        What is "sha3_256().update()" for?
+        What is "sha3_256().update(m_byt)" for?
         """
 
         h_byt = h_o.digest() 
@@ -125,6 +125,11 @@ def main():
         d_str = ntruDecrypt(e_polys, SNSK, e_n)
         decrypt_elapsed_time = timer() - t
 
+
+        """
+        Why it dont need to unsign the signature?
+        """
+        
         # valid
         # print(d_str == m_str)
 
