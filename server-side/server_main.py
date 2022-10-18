@@ -1,4 +1,5 @@
-# Author: Jason
+# Author: Jason, Hubert
+
 from dotenv import load_dotenv
 
 load_dotenv()
