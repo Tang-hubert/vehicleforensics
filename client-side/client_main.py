@@ -1,5 +1,5 @@
-# Author: Jason
-# Tester: Jason
+# Author: Jason, Hubert
+# Tester: Jason, Hubert
 
 # from utils.watchdog import Watchdog
 import bluetooth as bt
@@ -17,16 +17,18 @@ from pathlib import Path
 # setting path
 # sys.path.append('../')
 
-# # Load .env & setup
-dotenv_path = Path('.env.example')
+# # Load .env
+dotenv_path = Path('./client-side/.env')
 load_dotenv(dotenv_path=dotenv_path)
 
-RABBITMQ_IP = os.getenv('RABBITMQ_IP')
-print(os.getenv('RABBITMQ_IP'))
-RABBITMQ_PORT = os.getenv('RABBITMQ_PORT')
-RABBITMQ_USERNAME = os.getenv('RABBITMQ_USERNAME')
-RABBITMQ_PWD = os.getenv('RABBITMQ_PWD')
-RABBITMQ_QUEUE = os.getenv('RABBITMQ_QUEUE')
+# RabbitMQ setup
+RABBIRMQ_HOST = os.getenv("RABBITMQ_HOST")
+RABBITMQ_PORT = int(os.getenv("RABBITMQ_PORT"))
+
+RABBITMQ_USERNAME = os.getenv("RABBITMQ_DEFAULT_USER")
+RABBITMQ_PASSWORD = os.getenv("RABBITMQ_DEFAULT_PASS")
+
+RABBITMQ_QUEUE = os.getenv("RABBITMQ_QUEUE")
 
 # Logging Config
 # https://www.loggly.com/blog/4-reasons-a-python-logging-library-is-much-better-than-putting-print-statements-everywhere/#gist21143108
