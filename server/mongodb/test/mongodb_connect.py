@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from pathlib import Path
 
-dotenv_path = Path('C:/Users/Hubert Tang/Desktop/folders/履歷/車載資安專題/vehicleforensics/server/mongodb/test/.env.example')
+dotenv_path = Path('./server/mongodb/test/.env')
 load_dotenv(dotenv_path=dotenv_path)
 
 MONGODB_HOST = os.getenv("MONGODB_HOST")
