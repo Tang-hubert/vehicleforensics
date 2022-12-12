@@ -15,7 +15,8 @@ TEST_N = 1
 
 SNPK, SNSK = generate_keypair(config.N_P, config.N_Q, config.N_D, config.N_N)
 
-# print(SNPK)
+print("SNPK: ", SNPK)
+print("SNSK: ", SNSK)
 
 # data = {
 #     "timestamp": time.time(),
