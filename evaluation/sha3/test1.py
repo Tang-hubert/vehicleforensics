@@ -15,6 +15,7 @@ data = {
 def main():
     i = 0
     while i <= 100:
+        print("json:", json.dumps(data))
         t = timer() # start timer
         sha3_256().update(json.dumps(data).encode()) # encode() with default 'utf-8'
         elaspsed_time = timer() - t # calculate time duration
