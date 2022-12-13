@@ -15,8 +15,8 @@ TEST_N = 1
 
 SNPK, SNSK = generate_keypair(config.N_P, config.N_Q, config.N_D, config.N_N)
 
-print("SNPK: ", SNPK)
-print("SNSK: ", SNSK)
+# print("SNPK: ", SNPK)
+# print("SNSK: ", SNSK)
 
 # data = {
 #     "timestamp": time.time(),
@@ -70,10 +70,10 @@ def main():
     # desirePIDList = ['0C', '0D']
 
     # Data init
-    # data = f"{time.time()},04:A,0C:AA,0D:A,11:A"
+    data = f"{time.time()},04:A,0C:AA,0D:A,11:A"
     # data = f"{time.time()},{{{0}}}:A,0C:AA,0D:A,11:A".format("04")
     # data = "{}"
-    data = "{{{0}}}:A,0C:AA,0D:A,11:A".format("04")
+    # data = "{{{0}}}:A,0C:AA,0D:A,11:A".format("04")
     # data = "Ass"
     # data = "1654273410.7560978,b'NIhMjsINY1rsvG7W7PcKbk3Gsie7h8wXHcIGWDysbpwBrDGw4nSzyPyESVD2DLo1lDsNWpjdw+SKh+TiQAAA',PID1:AAAA"
     # data = "NIhMjsINY1rsvG7W7PcKbk3Gsie7h8wXHcIGWDysbpwBrDGw4nSzyPyESVD2DLo1lDsNWpjdw+SKh+TiQAA"
