@@ -78,6 +78,7 @@ def main():
         m_byt = m_str.encode()
 
         # hash
+        # https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html
         h_o = sha3_256()
         t = timer()
         h_o.update(m_byt)
