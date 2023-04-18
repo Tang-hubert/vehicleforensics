@@ -29,7 +29,7 @@ def main():
     channel.queue_declare(queue=RABBITMQ_QUEUE)
 
     while True:
-        channel.basic_publish(exchange='', routing_key=RABBITMQ_QUEUE, body=datetime.now().strftime('%H:%M:%S'))
+        channel.basic_publish(exchange='', routing_key=RABBITMQ_QUEUE, body=f"HI!, {datetime.now().strftime('%H:%M:%S')}")
         print(" [x] Message Sent")
         # body: prod to cons
 
