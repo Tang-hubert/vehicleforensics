@@ -69,7 +69,6 @@ def ntruDecrypt(cipherPolys, privateKey, n):
 
 def main():
 
-    # m_str = f"(hello)111222"
     m_str = f"{time.time()}"
 
     i = 0
@@ -78,8 +77,7 @@ def main():
 
     while i < TEST_N:
 
-        m_byt = m_str.encode("utf-8")
-        # print("m_byt:", m_byt)
+        m_byt = m_str.encode()
 
         # hash
         h_o = sha3_256()
@@ -87,30 +85,16 @@ def main():
         h_o.update(m_byt)
         hash_elapsed_time = timer() - t
         h_byt = h_o.digest()
-        
+
         # sign
         t = timer()
-        s_byt = CFSK.sign(m_byt) # if run s_byt = CFSK.sign(m_str) error: Object type <class 'str'> cannot be passed to C code
+        s_byt = CFSK.sign(h_byt)
         sign_elapsed_time = timer() - t
-        print("m_str:", m_str)
-        print("m_byt:", m_byt)
-        print("s_byt:", s_byt)
-        print("str(s_byt):", str(s_byt))
-
 
         # encrypt
         # print(m_str)
         t = timer()
-        e_polys, e_n = ntruEncrypt(str(s_byt), SNPK) 
-        # when doing ntruEncrypt().ntruTrans().koblitz_encoder() error: Squared norm of signature is too large.
-        # resorce: https://github.com/tprest/falcon.py/blob/master/falcon.py, Line: 386 error
-        # @annotation .\evaluation\falcon\falcon_utils\falcon.py Line:193
-        # add verify function into class named "PublicKey".
-        
-        '''
-        str(s_byt) may have some problem
-        '''
-        
+        e_polys, e_n = ntruEncrypt(m_str, SNPK)
         encrypt_elapsed_time = timer() - t
 
         e_list = []
@@ -130,9 +114,7 @@ def main():
         t = timer()
         v_bool = CFPK.verify(h_byt, s_byt)
         verify_elapsed_time = timer() - t
-        '''
-        Verifying the signature may have some problems.
-        '''
+        # print(v_bool)
 
         # timedelta(seconds=elaspsed_time).total_seconds
         # print(f"{i}, {timedelta(seconds=hash_elapsed_time).total_seconds()}, {timedelta(seconds=sign_elapsed_time).total_seconds()}, {timedelta(seconds=encrypt_elapsed_time).total_seconds()}, {timedelta(seconds=decrypt_elapsed_time).total_seconds()}, {timedelta(seconds=verify_elapsed_time).total_seconds()}")
@@ -156,7 +138,7 @@ def main():
 
         # ====== Next Loop ======
         i += 1
-        m_str += f",PID{i}:AAAA"  # `PID` must be capital for NTRU
+        # m_str += f",PID{i}:AAAA"  # `PID` must be capital for NTRU
 
     print(df.tail())
     df.to_csv('full_n100_server.csv', index=False)

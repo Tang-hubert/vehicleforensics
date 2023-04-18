@@ -100,7 +100,8 @@ def main():
         h.update(data.encode())
         # h.update(data)
         print(f"hash: {h.hexdigest()}")
-
+        print(type(data))
+        
         # _, _ = ntruEncrypt(json.dumps(data), SNPK)
         cipher_polys, n = ntruEncrypt(data, SNPK)
         # cipher_polys, n = ntruEncrypt(str(data), SNPK)
